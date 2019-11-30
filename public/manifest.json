@@ -1,7 +1,7 @@
 {
-  "name": "A basic Progressive Web App",  
+  "name": "Gestão de Eventos",  
   "lang": "pt",
-  "short_name": "Conservadora Pr",
+  "short_name": "Gestão de Eventos",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
