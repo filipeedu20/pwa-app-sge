@@ -1,9 +1,10 @@
 # PWA - GESTÃO DE EVENTOS 
 
-## O segundo maior título
-    https://guiasoft.com.br/
+## LINK DA APLICAÇÃO
 
-## O segundo maior título
+-   https://guiasoft.com.br/
+
+## REQUISITOS IMPLEMENTADOS
 
 1.	Registrar um Service Worker;
 2.  Instalar aplicação no dispositivo móvel
@@ -12,4 +13,4 @@
 5.	Carrega rapidamente em conexões 3G;
 7.	Deve colorir a barra de endereço do navegador com as cores do site;
 8.	Responsivo;
-9.	Cross-browser (IE,CHROME,FIREFOX).
+9.	Cross-browser (Internet Explorer,Google Chrome, Mozilla Firefox).
