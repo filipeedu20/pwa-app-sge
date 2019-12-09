@@ -1,13 +1,15 @@
 # PWA - GESTÃO DE EVENTOS 
 
-# LINK DA APLICAÇÃO
+## O segundo maior título
+    https://guiasoft.com.br/
 
-# REQUISITOS IMPLEMENTADOS
+## O segundo maior título
 
 1.	Registrar um Service Worker;
-2.  Resposta com status 200 mesmo estando offline ;
-3.  Toda a comunicação deve usar HTTPS ;
-4.	Carrega rapidamente em conexões 3G;
-5.	Deve colorir a barra de endereço do navegador com as cores do site;
-6.	Responsivo;
-7.	Cross-browser (IE,CHROME,FIREFOX).
+2.  Instalar aplicação no dispositivo móvel
+3.  Resposta com status 200 mesmo estando offline ;
+4.  Toda a comunicação deve usar HTTPS ;
+5.	Carrega rapidamente em conexões 3G;
+7.	Deve colorir a barra de endereço do navegador com as cores do site;
+8.	Responsivo;
+9.	Cross-browser (IE,CHROME,FIREFOX).
