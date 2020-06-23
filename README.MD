@@ -2,7 +2,7 @@
 
 ## LINK DA APLICAÇÃO
 
--   https://guiasoft.com.br/
+-   https://app-guiasoft-com-br.umbler.net
 
 ## REQUISITOS IMPLEMENTADOS
 
