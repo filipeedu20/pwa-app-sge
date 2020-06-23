@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gerencimento de eventos</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/style.css">
-  <link rel="stylesheet" href="/src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/bootstrap.css">
   <link rel="manifest" href="/manifest.json">
 </head>
 <body>
@@ -31,6 +31,9 @@
       <li class="nav-item">
           <a class="nav-link" href="meu_cadastro.html">Cadastro</a>
       </li>      
+       <li class="nav-item">
+          <a class="nav-link" href="lista_presenca.html">Lista de Presença</a>
+      </li>      
       </ul>        
   </div>
 </nav>
@@ -40,32 +43,39 @@
         <div class='col-lg-12'>
             <h1>Sistema de Gestão de Eventos</h1>
         </div>                
-        <article class='col-sm-12 col-lg-4 cont'>
-            <h2>Evento 1</h2>            
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <a href="evento.html" class='btn btn-primary'>Inscrever-se</a>
-        </article>      
-        <article class='col-sm-12 col-lg-4  cont'>
-            <h2>Evento 2</h2>            
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a href="evento.html" class='btn btn-primary'>Inscrever-se</a>
-        </article>
-        <article class='col-sm-12 col-lg-4 cont'>
-            <h2>Evento 3</h2>            
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a href="evento.html" class='btn btn-primary'>Inscrever-se</a>
-        </article>
     </div>  
   </section>      
 </article>
-<script src="/src/js/app.js"></script>
-<script src="/src/js/jquery.js"></script>    
-<script src="/src/js/bootstrap.min.js"></script>
+
+<script src="src/js/app.js"></script>
+<script src="src/js/jquery.js"></script>   
+<script>
+   
+   $( window ).on( "load", function() {
+    var formData = new FormData();
+    
+    $.ajax({
+    type: "get",
+    url: url+"evento/",
+    data: {},
+    dataType: "Json",
+    success: function (r) {
+    var evento = r.dados.resultado;
+    
+      for(i=0; i< evento.length; i++){
+      $(".cont").append(
+        "<article class='col-sm-12 col-lg-4 lista_evento'>"+
+            "<h3>"+evento[i].nome+"</h3>"+            
+            "<p>"+evento[i].descricao+"</p>"+
+            "<a href='detalhe_evento_adm.html?id="+evento[i].idEvento+"' class='btn btn-primary'>visualizar</a> "+
+            " <a href='detalhe_evento_adm.html?id="+evento[i].idEvento+"' class='btn btn-primary'>Inscrever-se</a>"+
+        "</article>");
+      }
+    }         
+    });   
+  });
+</script>
+<script src="src/js/jquery.js"></script>    
+<script src="src/js/bootstrap.min.js"></script>
 </body>
 </html>
