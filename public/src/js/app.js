@@ -3,8 +3,8 @@ var pwaCardContent = pwaCard.querySelector('.card__content');
 var pwaCardDetails = pwaCard.querySelector('.card__details');
 var detailsShown = false;
 
-var url          ="http://flipeeduardo.com.br/server-pwa/api/"; 
-var url_download ="http://projetos/teste-wpa/servidor-predisul/download/realizarDownload/";
+var url          ="https://filipeeduardo.com.br/server-pwa/api/"; 
+var url_download ="https://projetos/teste-wpa/servidor-predisul/download/realizarDownload/";
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
