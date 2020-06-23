@@ -1,7 +1,7 @@
 {
-  "name": "Gestão de Eventos",  
+  "name": "SGE",  
   "lang": "pt",
-  "short_name": "Gestão de Eventos",
+  "short_name": "SGE",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
