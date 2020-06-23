@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gestão de Eventos</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="/src/css/bootstrap.css">
+  <link rel="stylesheet" href="/src/css/app.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+<header class="main-header">  
+</header>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <a class="nav-link" href="index.html">Início </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="lista_eventos.html"> Lista de Eventos dd<span class="sr-only">(current)</span> </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="meu_cadastro.html">Cadastro</a>
+      </li>                    
+      </ul>        
+  </div>
+</nav>
+<article class="col-lg-12" id="pwa"> 
+  <section class='conteudo'>
+    <div class='row cont'>
+        <div class='col-lg-12 '>
+            <h1>Lista de eventos </h1>
+        </div>                
+        <article class='col-sm-12 col-lg-4 cont'>
+           <div class='registro'>
+            
+            <button class='btn btn-primary btn_inscrever'>Inscrever-se</button>
+
+              <div class='arquivo'>
+              </div>
+
+		       </div>
+        </article>              
+    </div>  
+  </section>     
+</article>
+<script src="/src/js/app.js"></script>
+<script src="/rc/js/jquery.js"></script>
+<script src="/src/js/bootstrap.min.js"></script>
+<script>
+   
+   $( window ).on( "load", function() {
+
+    var url_param = window.location.href; 
+    var parametrosDaUrl = url_param.split("?")[1];
+    var id = url_param.split("id=")[1];
+    var idEvento;
+    var idUsuario = id;
+    
+     var url_local =url+"evento/"+id //url do webserver que recebe a requisicao
+      $.ajax({
+  		type: "get",
+  		url: url_local,
+  		data: {},
+  		dataType: "Json",
+  		success: function (r) {
+  		var evento = r.dados;
+      var arquivo = r.dados_arquivo;
+
+
+  	  idEvento = evento.idEvento ; //recebe id do evento para realizar a inscrição 
+     
+		  $(".registro").append("<div class='controle'>"+
+				"<p>"+evento.nome+"</p>"+
+				"<p>"+evento.descricao+"</p>"+
+        "<a href='adicionar_video_adm.html?id="+evento.idEvento+"' class='btn btn-primary'>adicionar vídeo</a>"+
+        "<a href='adicionar_arquivo_adm.html?id="+evento.idEvento+"' class='btn btn-primary'>adicionar Arquivo</a>"+
+        "<div class='video col-lg-12'>"+
+           "<p>"+evento.url+"</p>"+
+        "</div>"+
+			  "</div>");
+
+
+      // lista arquivos relacionados a evento 
+      if(arquivo.length!=0){
+          for(var i=0; i< arquivo.length;i++){
+            console.log(arquivo[i]);
+            $(".arquivo").append(
+             "<p><a href='"+url_download+"/"+arquivo[i].idArquivo+"'>"+arquivo[i].nome_sistema+"</a></p>");
+          }
+       }
+  		}							
+	  });	
+
+
+    $(".btn_inscrever").click(function(event) {
+      /* Act on the event */
+     
+        $.ajax({
+        type: "POST",
+        url: url+"evento/inscricao",
+        data: {idEvento_e:idEvento,idUsuario_u:idUsuario},
+        dataType: "Json",
+        beforeSend: function(){
+          //$(".pesquisa").show();
+          console.log("Enviando formulário");
+        },
+        success: function (r) {
+            console.log(r);
+        },
+        complete: function(){
+          //$(".pesquisa").hide();
+          console.log("Tudo finalizado");
+        }       
+      }); 
+
+        
+      return false;
+    });	
+  });
+</script>
+</body>
+</html>
