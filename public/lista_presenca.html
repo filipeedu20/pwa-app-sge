@@ -21,27 +21,27 @@
       <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-          <a class="nav-link" href="index.html">Eventos <span class="sr-only">(current)</span></a>
-      </li>    
+        <a class="nav-link" href="eventos_adm.html">Eventos <span class="sr-only">(current)</span></a>
+      </li>            
       <li class="nav-item">
-        <a class="nav-link" href="lista_eventos.html"> Lista de Eventos </a>
+        <a class="nav-link" href="cadastro_evento.html">Cadastrar Evento</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="cadastro_participante.html">Cadastrar Participante</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="lista_participante.html">Lista de Participantes</a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" href="meu_cadastro.html">Cadastro</a>
-      </li>      
-       <li class="nav-item">
-          <a class="nav-link" href="lista_presenca.html">Lista de Presença</a>
-      </li>      
-      </ul>        
+    </ul>            
   </div>
 </nav>
 <article class="card" id="pwa">  
   <section class='container'>
     <div class='row cont'>
         <div class='col-lg-12 lista'>
-            <h1>Lista de Presença</h1>
+            <h2>Lista de Presença</h2>
         </div>                  
     </div>  
   </section>      
@@ -54,22 +54,27 @@
   function atualizaLista(){
 
     $(".lista_evento").remove();
-    var url_server ="https://filipeeduardo.com.br/rest-arquivo/api/evento/" //url do webserver que recebe a requisicao
-    var url_local = "http://projetos/teste-wpa/servidor-predisul/api/evento/"
-    var url ="http://projetos/teste-wpa/servidor-predisul/api/evento/ocupacao/1"; //pegar valor do id direto pela url da página 
+
+    var url_param = window.location.href; 
+    var parametrosDaUrl = url_param.split("?")[1];
+    var id_evento = url_param.split("id=")[1];
 
     $.ajax({
     type: "get",
-    url: url,
+    url: url+"evento/ocupacao/"+id_evento,
     data: {},
     dataType: "Json",
     success: function (r) {
     var evento = r.dados;
-    console.log(r,evento);
+    console.log(url+"evento/ocupacao/"+id_evento);
+      if(evento==null){
+       
+      }
+    
       for(i=0; i< evento.length; i++){
       $(".cont").append(
         "<article class='col-sm-12 col-lg-4 lista_evento'>"+
-            "<h3>"+evento[i].nome_user+"</h3>"+            
+            "<h4>"+evento[i].nome_user+"</h4>"+            
             "<p>"+evento[i].presenca+"</p>"+
             "<button onclick='alteraChamada("+evento[i].idInscricao+")'; class='presenca'>Presente</button></p>"+
         "</article>");
@@ -78,11 +83,11 @@
     });   
   }
 
+  // Adiciona presença para usuário participante selecionado 
  function alteraChamada(idInscricao){
-
    $.ajax({
     type: "PUT",
-    url:'http://projetos/teste-wpa/servidor-predisul/api/evento/ocupacao/'+idInscricao ,
+    url:url+'evento/ocupacao/'+idInscricao ,
     data:{idInscricao: idInscricao, presenca:1},
     dataType: "Json",
     success: function (r) {
@@ -96,7 +101,7 @@
  atualizaLista();
 
 </script>
-<script src="src/js/jquery.js"></script>    
-<script src="src/js/bootstrap.min.js"></script>
+
+<script src="/src/js/bootstrap.min.js"></script>
 </body>
 </html>

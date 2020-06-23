@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/style.css">
   <link rel="stylesheet" href="/src/css/bootstrap.css">
+  <link rel="stylesheet" href="/src/css/app.css">
   <link rel="manifest" href="/manifest.json">
 </head>
 <body>
@@ -20,18 +21,20 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-          <a class="nav-link" href="index.html">Início </a>
-      </li>
+  <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="lista_eventos.html"> Lista de Eventos dd<span class="sr-only">(current)</span> </a>
-      </li>
+        <a class="nav-link" href="eventos_adm.html">Eventos <span class="sr-only">(current)</span></a>
+      </li>            
       <li class="nav-item">
-          <a class="nav-link" href="meu_cadastro.html">Cadastro</a>
-      </li>                    
-      </ul>        
+        <a class="nav-link" href="cadastro_evento.html">Cadastrar Evento</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="cadastro_participante.html">Cadastrar Participante</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="lista_participante.html">Lista de Participantes</a>
+      </li>
+    </ul>         
   </div>
 </nav>
 <article class="col-lg-12" id="pwa"> 
@@ -58,12 +61,15 @@
           </div>
           <button type="submit" class='btn btn-primary'>Salvar</button>
         </form>
+
+
         </article>              
     </div>  
   </section>     
 </article>
+
 <script src="/src/js/app.js"></script>
-<script src="/rc/js/jquery.js"></script>
+<script src="/src/js/jquery.js"></script>    
 <script src="/src/js/bootstrap.min.js"></script>
 <script>
    

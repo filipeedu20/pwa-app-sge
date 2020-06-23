@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gerencimento de eventos</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/style.css">
-  <link rel="stylesheet" href="/src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/bootstrap.css">
   <link rel="manifest" href="/manifest.json">
 </head>
 <body>
@@ -46,8 +46,6 @@
     </div>  
   </section>      
 </article>
-
-
 <script src="/src/js/app.js"></script>
 <script src="/src/js/jquery.js"></script>    
 <script src="/src/js/bootstrap.min.js"></script>
@@ -62,7 +60,7 @@
 		dataType: "Json",
 		success: function (r) {
 
-      console.log(r);
+    console.log(r);
 		var evento = r.dados;
 		console.log(evento);
 	    for(i=0; i< evento.length; i++){

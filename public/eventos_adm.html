@@ -21,17 +21,20 @@
       <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="eventos_usuario.html">Eventos <span class="sr-only">(current)</span></a>
-        </li>    
-        <li class="nav-item">
-          <a class="nav-link" href="meus_eventos.html"> Meus Eventos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="meu_cadastro.html">Perfil</a>
-        </li>          
-      </ul>        
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="eventos_adm.html">Eventos <span class="sr-only">(current)</span></a>
+      </li>            
+      <li class="nav-item">
+        <a class="nav-link" href="cadastro_evento.html">Cadastrar Evento</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="cadastro_participante.html">Cadastrar Participante</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="lista_participante.html">Lista de Participantes</a>
+      </li>
+    </ul>      
   </div>
 </nav>
 <article class="card" id="pwa">  
@@ -45,7 +48,6 @@
 </article>
 <script src="/src/js/app.js"></script>
 <script src="/src/js/jquery.js"></script>   
-<script src="/src/js/bootstrap.min.js"></script>
 <script>
    $( window ).on( "load", function() {
     var formData = new FormData();
@@ -64,12 +66,15 @@
         "<article class='col-sm-12 col-lg-4 lista_evento'>"+
             "<h3>"+evento[i].nome+"</h3>"+            
             "<p>"+evento[i].descricao+"</p>"+
-            "<a href='detalhe_evento_user.html?id="+evento[i].idEvento+"' class='btn btn-primary'>visualizar</a> "+
+            "<a href='detalhe_evento_adm.html?id="+evento[i].idEvento+"' class='btn btn-primary'>visualizar</a> "+
+            "<a href='lista_presenca?id="+evento[i].idEvento+"' class='btn btn-primary'>Lista de Presença</a> "+
         "</article>");
       }
     }         
     });   
   });
 </script>
+<script src="/src/js/jquery.js"></script>    
+<script src="/src/js/bootstrap.min.js"></script>
 </body>
 </html>

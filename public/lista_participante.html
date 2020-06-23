@@ -8,10 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gestão de Eventos</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/style.css">
-  <link rel="stylesheet" href="/src/css/bootstrap.css">
-  <link rel="stylesheet" href="/src/css/app.css">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/app.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 <header class="main-header">  
@@ -25,10 +25,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
           <a class="nav-link" href="eventos_adm.html">Eventos <span class="sr-only">(current)</span></a>
-      </li>    
-      <li class="nav-item">
-          <a class="nav-link" href="lista_eventos.html">Lista Presença</a>
-      </li>        
+      </li>           
       <li class="nav-item">
         <a class="nav-link" href="cadastro_evento.html">Cadastrar Evento</a>
       </li> 
@@ -38,24 +35,37 @@
       <li class="nav-item">
         <a class="nav-link" href="lista_participante.html">Lista de Participantes</a>
       </li>  
-    </ul>             
+    </ul>              
   </div>
 </nav>
 <article class="col-lg-12" id="pwa"> 
   <section class='conteudo'>
     <div class='row cont'>
         <div class='col-lg-12 '>
-            <h1>Lista de eventos </h1>
+            <h1>Lista de Participantes </h1>
         </div>                
         <article class='col-sm-12 col-lg-4 cont'>
            <div class='registro'>
-		   </div>
+
+            
+            <table class='table table-bordered table-hover'>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Cidade</th>
+                </tr>
+              </thead>
+              <tbody class='tabela-pessoa'>
+                
+              </tbody>
+            </table>
+            
+		        </div>
         </article>              
     </div>  
   </section>     
 </article>
-
-
 <script src="/src/js/app.js"></script>
 <script src="/src/js/jquery.js"></script>    
 <script src="/src/js/bootstrap.min.js"></script>
@@ -66,20 +76,20 @@
     
     $.ajax({
 		type: "get",
-		url: url+"evento/",
+		url: url+"usuario/",
 		data: {},
 		dataType: "Json",
 		success: function (r) {
-		var evento = r.dados.resultado;
-		
-	    for(i=0; i< evento.length; i++){
-		  $(".registro").append("<div class='card'>"+
-				"<p>"+evento[i].nome+"</p>"+
-				"<p>"+evento[i].descricao+"</p>"+
-        "<p> <a he class=''>"+evento[i].descricao+"</p>"+
-        "<a href='detalhe_evento_adm.html?id="+evento[i].idEvento+"'>visualizar</a>"+
-			  "</div>");
-			}
+		var user = r.dados.resultado;
+		console.log(user);
+	    for(i=0; i< user.length; i++){
+		  $(".tabela-pessoa").append(
+          "<tr>"+
+            "<td>"+user[i].nome+"</td>"+
+            "<td>"+user[i].cpf+"</td>"+
+            "<td>"+user[i].cidade+"</td>"+
+          "</tr>");
+      } 
 		}								
 	  });		
   });

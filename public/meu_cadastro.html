@@ -40,19 +40,75 @@
         <div class='col-lg-12'>
             <h1>Dados Cadastrais</h1>
         </div>                
-        <article class='col-sm-12 col-lg-4 cont'>
-           
+        <article class='col-sm-12 col-lg-12 '>
+           <div class="registro">
+           </div>
         </article>              
     </div>  
   </section>      
 </article>
-<script>
-  var id_user = 1 ;
-
-  
-</script>
 <script src="/src/js/app.js"></script>
 <script src="/src/js/jquery.js"></script>    
 <script src="/src/js/bootstrap.min.js"></script>
+<script>
+  var id_user = 1 ;
+
+  $( window ).on( "load", function() {
+    $.ajax({
+		type: "get",
+		url: url+"usuario/"+id_user,
+		data: {},
+		dataType: "Json",
+		success: function (r) {
+		var user = r.dados;
+    console.log(user);
+    // $(".registro").append("<div class=''>"+
+		// 		"<p><strong>Nome: </strong> "+user.nome+"<p>"+
+		// 		"<p>"+user.rua+"</p>"+
+    //     "</div>");
+
+	    // for(i=0; i< evento.length; i++){
+		  // $(".registro").append("<div class='card'>"+
+			// 	"<h2>"+evento[i].nome+"</h2>"+
+			// 	"<p>"+evento[i].descricao+"</p>"+
+      //   "<p> <a he class=''>"+evento[i].descricao+"</p>"+
+      //   "<a href='detalhe_evento_user.html?id="+evento[i].idEvento+"' class='btn btn-primary '>visualizar evento</a>"+
+      //   "</div>"
+      
+
+      
+      $(".registro").append( "<table class='table table-bordered'>"+
+              "<tbody>"+
+                "<tr>"+
+                  "<td>Nome</td>"+
+                  "<td>"+user.nome+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                  "<td>CPF</td>"+
+                  "<td>"+user.cpf+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                  "<td>Telefon</td>"+
+                  "<td>"+user.telefone+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                  "<td>Sexo</td>"+
+                  "<td>"+user.sexo+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                  "<td>Estado</td>"+
+                  "<td>"+user.estado+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                  "<td>Cidade</td>"+
+                  "<td>"+user.cidade+"</td>"+
+                "</tr>"+
+              "</tbody>"+
+            "</table>");
+		}								
+	  });		
+  });
+</script>
+
 </body>
 </html>
