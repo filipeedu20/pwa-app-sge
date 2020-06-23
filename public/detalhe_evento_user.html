@@ -101,19 +101,34 @@ verifica_inscrito(idUsuario,idEvento);
 
   	  idEvento = evento.idEvento ; //recebe id do evento para realizar a inscrição 
      
-		  $(".registro").append("<div class='controle'>"+
-				"<p>"+evento.nome+"</p>"+
-				"<p>"+evento.descricao+"</p>"+
-        "<div class='video col-lg-12'>"+
-           "<p>"+evento.url+"</p>"+
-        "</div>"+
-			  "</div>");
+      var video = "";
+
+if(evento.url!=null){
+  video = evento.url;
+}
+
+idEvento = evento.idEvento ; //recebe id do evento para realizar a inscrição 
+
+  $(".registro").append("<div class='controle'>"+
+  "<p><strong>Nome: </strong>"+evento.nome+"</h3>"+
+    "<p> <strong>Data de Início:</strong>"+evento.dataInicio+" - <strong> Data do fim </strong>"+evento.dataFinal+" </p>"+
+    "<p><strong>Duração: </strong>"+evento.duracao+"</p>"+
+    "<p><strong>Quantide de vagas: </strong> "+evento.quantParticipantes+"</p>"+
+    "<p><strong>Tipo de Evento: </strong> "+evento.tipoEvento+"</p>"+
+
+    "<p>"+evento.descricao+"</p>"+
+   
+    "<div class='video col-lg-12'>"+
+        "<p>"+video+"</p>"+
+    "</div>"+
+    "</div>");
       // lista arquivos relacionados a evento 
       if(arquivo.length!=0){
+
           for(var i=0; i< arquivo.length;i++){
             console.log(arquivo[i]);
             $(".arquivo").append(
-             "<p><a href='"+url_download+"/"+arquivo[i].idArquivo+"'>"+arquivo[i].nome_sistema+"</a></p>");
+             "<li><a href='"+url_download+"/"+arquivo[i].idArquivo+"'>"+arquivo[i].nome_sistema+"</a></li>");
           }
        }
   		}							
@@ -121,8 +136,6 @@ verifica_inscrito(idUsuario,idEvento);
 
 
     $(".btn_inscrever").click(function(event) {
-      /* Act on the event */
-     
         $.ajax({
         type: "POST",
         url: url+"evento/inscricao",
@@ -138,8 +151,6 @@ verifica_inscrito(idUsuario,idEvento);
           console.log("Tudo finalizado");
         }       
       }); 
-
-        
       return false;
     });	
   });
