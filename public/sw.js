@@ -9,6 +9,7 @@ self.addEventListener('install', function (event) {
           '/evento.html',
           '/lista_eventos.html',
           '/meu_cadastro.html',
+          '/meus_eventos.html',
           '/src/js/app.js',
           '/src/css/app.css',
           '/src/css/bootstrap.css',
