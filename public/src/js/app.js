@@ -4,7 +4,7 @@ var pwaCardDetails = pwaCard.querySelector('.card__details');
 var detailsShown = false;
 
 var url          ="https://filipeeduardo.com.br/server-pwa/api/"; 
-var url_download ="https://projetos/teste-wpa/servidor-predisul/download/realizarDownload/";
+var url_download ="https://filipeeduardo.com.br/server-pwa/download/realizarDownload";
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
